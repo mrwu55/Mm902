@@ -1,0 +1,41 @@
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data class = "VideoBinding">
+        <import type="java.util.List" />
+        <variable
+            name="dataVideo"
+            type="List&lt;String&gt;" />
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#EBEBEB"
+        tools:context="yty.gxjy.com.mmxxx.fragment.NewFragment">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/f13c5d">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="视频"
+                android:layout_centerInParent="true"
+                android:textColor="@color/white"
+                android:textSize="18dp"/>
+
+        </RelativeLayout>
+        <yty.gxjy.com.mmxxx.rollpager.RollPagerView
+            android:id="@+id/video_rollpager"
+            android:layout_width="match_parent"
+            app:rollviewpager_play_delay="3000"
+            android:layout_height="188dp"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/video_recycler"
+            android:layout_marginTop="13dp"
+            app:videoPlay = "@{dataVideo}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+</layout>

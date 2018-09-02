@@ -1,0 +1,30 @@
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data class = "CollectBinding">
+        <import type="java.util.List" />
+        <variable
+            name="data"
+            type="List&lt;Integer&gt;" />
+    </data>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:text="收藏"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:textColor="@color/white"
+            android:layout_height="48dp"
+            android:background="@color/f13c5d"/>
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="6dp"
+            android:id="@+id/collect_recycler"
+            app:collectData="@{data}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</layout>
+

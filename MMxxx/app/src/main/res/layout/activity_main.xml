@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data class="MainClass">
+        <variable name="choosedHome"  type="boolean"/>
+        <variable name="choosedVideo"  type="boolean"/>
+        <variable name="choosedCollect" type="boolean"/>
+        <variable name="choosedMine"  type="boolean"/>
+        <variable name="listener"  type="yty.gxjy.com.mmxxx.Interface.HomeClickListener"/>
+</data>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="yty.gxjy.com.mmxxx.Activity.MainActivity">
+    <FrameLayout
+        android:id="@+id/frame_base"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/c7c7c"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:id="@+id/ll_home"
+                android:onClick="@{listener::onClick}"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <ImageView
+                    android:layout_width="21dp"
+                    android:background="@{choosedHome?@drawable/home_press:@drawable/home_normal}"
+                    android:layout_height="21dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:textColor="@{choosedHome?@color/f13c5d:@color/c797979}"
+                    android:text="私照"
+                    android:textSize="12dp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_video"
+                android:onClick="@{listener::onClick}"
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <ImageView
+                    android:layout_width="21dp"
+                    android:background="@{choosedVideo?@drawable/video_press:@drawable/video_normal}"
+                    android:layout_height="21dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="视频"
+                    android:textColor="@{choosedVideo?@color/f13c5d:@color/c797979}"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_collect"
+                android:onClick="@{listener::onClick}"
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <ImageView
+                    android:layout_width="21dp"
+                    android:background="@{choosedCollect?@drawable/collect_press:@drawable/collect_normal}"
+                    android:layout_height="21dp"/>
+                <TextView
+                    android:layout_marginTop="3dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="收藏"
+                    android:textColor="@{choosedCollect?@color/f13c5d:@color/c797979}"
+                    android:textSize="12dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_mine"
+                android:onClick="@{listener::onClick}"
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <ImageView
+                    android:layout_width="21dp"
+                    android:background="@{choosedMine?@drawable/mine_press:@drawable/mine_normal}"
+                    android:layout_height="21dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@{choosedMine?@color/f13c5d:@color/c797979}"
+                    android:text="我的"
+                    android:textSize="12dp"/>
+            </LinearLayout>
+        </LinearLayout>
+</LinearLayout>
+</layout>

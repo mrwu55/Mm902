@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data class = "NewRecyclerBindng">
+        <variable
+        name="imgId"
+        type="String"/>
+        <variable
+            name="msg"
+            type="String"/>
+</data>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="239dp"
+        app:imageUrl="@{imgId}"
+    />
+
+    <TextView
+        android:paddingLeft="11dp"
+        android:paddingRight="6dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:lineSpacingExtra="7dp"
+        android:textSize="11dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:text="@{msg}"/>
+</LinearLayout>
+</layout>

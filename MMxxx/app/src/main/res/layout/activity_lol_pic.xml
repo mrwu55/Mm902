@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data class="PicClass">
+        <variable name="listener"  type="yty.gxjy.com.mmxxx.Interface.MmClickListener"/>
+        <variable name="isCollect"  type="boolean"/>
+
+    </data>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true"
+        tools:context=".Activity.LolPicActivity"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/black"
+            android:paddingRight="16dp">
+            <RelativeLayout
+                android:id="@+id/img_pic_back"
+                android:onClick="@{listener::onClick}"
+                android:paddingLeft="15dp"
+                android:layout_width="60dp"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="18dp"
+                    android:background="@mipmap/home_back"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:background="@mipmap/pic_right"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/lol_pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+           />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:id="@+id/tv_lol_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="@color/c22"
+                android:layout_marginBottom="9dp"
+                android:paddingLeft="14dp"
+                android:paddingRight="17dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:background="@color/black">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@mipmap/zan"/>
+                <TextView
+                    android:layout_width="40dp"
+                    android:textSize="11dp"
+                    android:textColor="@color/white"
+                    android:text="215"
+                    android:layout_marginLeft="4dp"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:layout_width="21dp"
+                    android:layout_height="19dp"
+                    android:background="@mipmap/bb"/>
+                <TextView
+                    android:layout_width="40dp"
+                    android:textSize="11dp"
+                    android:textColor="@color/white"
+                    android:text="215"
+                    android:layout_marginLeft="4dp"
+                    android:layout_height="wrap_content" />
+
+                <View
+                    android:layout_width="172dp"
+                    android:background="@drawable/picdetail_bb"
+                    android:layout_height="29dp"/>
+                <ImageView
+                    android:background="@{isCollect?@drawable/collect_lol:@drawable/xin}"
+                    android:onClick="@{listener::onClick}"
+                    android:id="@+id/img_lol_collect"
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="19dp"
+                    android:layout_height="17dp"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

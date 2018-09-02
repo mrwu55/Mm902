@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data class="LoginClass">
+        <variable name="listener"  type="yty.gxjy.com.mmxxx.Interface.MmClickListener"/>
+    </data>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    tools:context="yty.gxjy.com.mmxxx.Activity.LoginActivity"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="登录"
+        android:textSize="18dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:background="@color/f13c5d"/>
+    <yty.gxjy.com.mmxxx.Util.XCRoundImageView
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="26dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="90dp"
+        android:src="@drawable/p1"
+        android:layout_height="90dp" />
+    <RelativeLayout
+        android:layout_width="297dp"
+        android:layout_height="37dp"
+        android:background="@drawable/login_edit_bg"
+        android:layout_gravity="center_horizontal">
+        <EditText
+            android:id="@+id/login_edit_phone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="58dp"
+            android:text="user1"
+            android:hint="请输入账号"
+            android:textColor="@color/f13c5d"
+            android:textSize="15dp"
+            android:background="@null"/>
+        <ImageView
+            android:layout_marginLeft="17dp"
+            android:layout_centerVertical="true"
+            android:layout_width="18dp"
+            android:background="@mipmap/login_phone"
+            android:layout_height="26dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="297dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="23dp"
+        android:background="@drawable/login_edit_bg"
+        android:layout_gravity="center_horizontal">
+        <EditText
+            android:id="@+id/login_edit_pss"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="58dp"
+            android:hint="请输入密码"
+            android:text="user1"
+            android:textColor="@color/f13c5d"
+            android:inputType="textPassword"
+            android:textSize="15dp"
+            android:background="@null"/>
+        <ImageView
+            android:layout_marginLeft="17dp"
+            android:layout_centerVertical="true"
+            android:layout_width="23dp"
+            android:background="@mipmap/login_psclose"
+            android:layout_height="17dp" />
+    </RelativeLayout>
+    
+    <TextView
+        android:layout_width="297dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="27dp"
+        android:gravity="center"
+        android:textSize="15dp"
+        android:textColor="@color/white"
+        android:text="登录"
+        android:onClick="@{listener::onClick}"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/login_btn"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="注册"
+        android:textSize="12dp"
+        android:layout_gravity="right"
+        android:layout_marginTop="26dp"
+        android:layout_marginRight="40dp"
+        android:textColor="@color/f13c5d"/>
+</LinearLayout>
+</layout>

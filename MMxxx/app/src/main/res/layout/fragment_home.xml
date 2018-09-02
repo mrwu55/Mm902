@@ -1,0 +1,25 @@
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data class="HomeBinding">
+    </data>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+            <android.support.design.widget.TabLayout
+                android:id="@+id/home_tablayout"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
+                app:tabSelectedTextColor="@color/white"
+                app:tabBackground="@android:color/transparent"
+                app:tabIndicatorColor="@android:color/white"
+                app:tabIndicatorHeight="2dp"
+                android:background="@color/f13c5d"/>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/home_pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+</layout>

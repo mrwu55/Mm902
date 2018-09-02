@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data class = "CollectRecyclerBindng">
+        <variable
+            name="imgId"
+            type="String"/>
+    </data>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:scaleType="fitXY"
+            app:imageUrl="@{imgId}"
+            />
+    </LinearLayout>
+</layout>

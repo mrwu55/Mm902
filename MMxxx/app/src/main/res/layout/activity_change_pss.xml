@@ -1,0 +1,95 @@
+<layout>
+    <data class="ChangePssClass">
+        <variable name="listener"  type="yty.gxjy.com.mmxxx.Interface.MmClickListener"/>
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/ebeb"
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true"
+        tools:context=".Activity.PersonDataActivity">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/f13c5d">
+            <RelativeLayout
+                android:id="@+id/re_code_back"
+                android:layout_width="60dp"
+                android:onClick="@{listener::onClick}"
+                android:paddingLeft="15dp"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_centerVertical="true"
+                    android:background="@mipmap/back"
+                    android:layout_height="20dp"
+                    />
+            </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="修改密码"
+                android:layout_centerInParent="true"
+                android:textSize="18dp"
+                android:textColor="@color/white"
+                android:background="@color/f13c5d"/>
+        </RelativeLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:textSize="13dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="20dp"
+                android:paddingLeft="10dp"
+                android:background="@drawable/changeps_edit_bg"
+                android:layout_marginTop="11dp"
+                android:singleLine="true"
+                android:textColor="#565656"
+                android:digits="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:hint="请输入旧密码"/>
+            <EditText
+                android:background="@drawable/changeps_edit_bg"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="20dp"
+                android:paddingLeft="10dp"
+                android:layout_marginTop="11dp"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:textSize="13dp"
+                android:singleLine="true"
+                android:textColor="#565656"
+                android:inputType="textPassword"
+                android:digits="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:hint="请输入新密码"/>
+        <EditText
+            android:background="@drawable/changeps_edit_bg"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="20dp"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="11dp"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:textSize="13dp"
+            android:singleLine="true"
+            android:textColor="#565656"
+            android:inputType="textPassword"
+            android:digits="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:hint="请再次输入新密码"/>
+
+            <Button
+                android:layout_width="80dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/changeps_sure"
+                android:layout_marginTop="30dp"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:text="提交"
+                android:layout_height="41dp" />
+        </LinearLayout>
+
+</layout>

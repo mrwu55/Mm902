@@ -1,0 +1,71 @@
+<layout>
+    <data class="CallbackClass">
+        <variable name="listener"  type="yty.gxjy.com.mmxxx.Interface.MmClickListener"/>
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/ebeb"
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true"
+        tools:context=".Activity.PersonDataActivity">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/f13c5d">
+            <RelativeLayout
+                android:id="@+id/re_callback_back"
+                android:layout_width="60dp"
+                android:onClick="@{listener::onClick}"
+                android:paddingLeft="15dp"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_centerVertical="true"
+                    android:background="@mipmap/back"
+                    android:layout_height="20dp"
+                    />
+            </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="意见反馈"
+                android:layout_centerInParent="true"
+                android:textSize="18dp"
+                android:textColor="@color/white"
+                android:background="@color/f13c5d"/>
+        </RelativeLayout>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:textSize="13dp"
+            android:paddingTop="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="@color/white"
+            android:layout_marginTop="11dp"
+            android:gravity="top"
+            android:textColor="@color/black28"
+            android:textColorHint="@color/black28"
+            android:digits="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:hint="请详细描述您的问题或建议，我们将及时跟进和解决！"
+            />
+
+        <Button
+            android:onClick="@{listener::onClick}"
+            android:id="@+id/tv_callback_sure"
+            android:layout_width="317dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/login_btn"
+            android:layout_marginTop="44dp"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:text="提交"
+            android:layout_height="37dp" />
+    </LinearLayout>
+
+</layout>
