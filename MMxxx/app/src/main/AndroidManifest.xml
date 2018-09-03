@@ -57,7 +57,8 @@
         <activity android:name=".Activity.ChangePssActivity" />
         <activity android:name=".Activity.CustomerActivity" />
         <activity android:name=".Activity.CallbackActivity" />
-        <activity android:name=".Activity.LolPicActivity"></activity>
+        <activity android:name=".Activity.LolPicActivity" />
+        <activity android:name=".Activity.SearchActivity"></activity>
     </application>
 
 </manifest>

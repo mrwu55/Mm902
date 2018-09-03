@@ -7,10 +7,10 @@ import yty.gxjy.com.mmxxx.R
 import yty.gxjy.com.mmxxx.databinding.ChangePssClass
 
 class ChangePssActivity : BaseActivity(),MmClickListener {
+
     override fun onClick(view: View) {
         finish()
     }
-
     private var binding: ChangePssClass?=null
 
     override fun initData() {

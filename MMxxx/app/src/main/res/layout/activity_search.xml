@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data class="SearchClass">
+        <variable name="listener"
+            type="yty.gxjy.com.mmxxx.Interface.MmClickListener"/>
+    </data>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_height="match_parent"
+        tools:context=".Activity.SearchActivity"
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true"
+        android:background="@color/ebeb"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:paddingRight="20dp"
+            android:orientation="horizontal"
+            android:background="@color/f13c5d">
+            <RelativeLayout
+                android:onClick="@{listener::onClick}"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp"
+                >
+                <ImageView
+                    android:layout_width="20dp"
+                    android:background="@mipmap/back"
+                    android:layout_height="20dp"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="35dp"
+                android:background="@drawable/picdetail_bb"
+                android:layout_gravity="center_vertical">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@mipmap/search_search"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    />
+                <EditText
+                    android:id="@+id/edit_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="搜索"
+                    android:singleLine="true"
+                    android:textSize="13dp"
+                    android:imeOptions="actionSearch"
+                    android:textColor="@color/c747474"
+                    android:paddingLeft="15dp"
+                    android:background="@null"
+                    />
+            </RelativeLayout>
+
+        </LinearLayout>
+      <android.support.v7.widget.RecyclerView
+          android:id="@+id/recycler_search"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          />
+
+    </LinearLayout>
+</layout>

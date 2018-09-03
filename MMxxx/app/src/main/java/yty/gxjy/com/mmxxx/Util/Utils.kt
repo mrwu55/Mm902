@@ -42,11 +42,12 @@ object Utils{
                     width/3)
             tv!!.setLayoutParams(layoutParams)
             toast?.setDuration(Toast.LENGTH_SHORT)
-            tv?.text = str
+//            tv?.text = str
             toast?.setGravity(Gravity.CENTER,0,0);
         }else{
-            tv?.text = str
+            toast?.setDuration(Toast.LENGTH_SHORT)
         }
+        tv?.text = str
         toast?.show()
     }
 }

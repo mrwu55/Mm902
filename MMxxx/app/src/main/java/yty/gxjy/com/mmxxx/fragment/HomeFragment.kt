@@ -1,16 +1,19 @@
 package yty.gxjy.com.mmxxx.fragment
 
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import yty.gxjy.com.mmxxx.Activity.SearchActivity
+import yty.gxjy.com.mmxxx.Interface.MmClickListener
 import yty.gxjy.com.mmxxx.R
 import yty.gxjy.com.mmxxx.adapter.HomePagerAdapter
 import yty.gxjy.com.mmxxx.databinding.HomeBinding
 
-class HomeFragment : BaseFragment() {
+class HomeFragment : BaseFragment(),MmClickListener {
     var binding: HomeBinding? = null
     var mTabLayout:TabLayout? = null
     var mViewPager:ViewPager? = null
@@ -30,5 +33,13 @@ class HomeFragment : BaseFragment() {
     }
 
     override fun initData() {
+        binding?.listener =this
+    }
+    override fun onClick(view: View) {
+            when(view.id){
+                R.id.home_search ->{
+                    activity.startActivity(Intent(activity,SearchActivity().javaClass))
+                }
+            }
     }
 }
