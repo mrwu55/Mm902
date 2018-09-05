@@ -7,7 +7,6 @@ import android.databinding.DataBindingUtil
 import android.os.Handler
 import android.os.Message
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -63,7 +62,7 @@ class HotFragment : BaseFragment(),RecyclerItemClick {
     }
     override fun initData() {
         OkHttpUtils.getInstance().getData(activity, Constans.getPics,
-                FormBody.Builder().add("orderType","2").add("tagName","").
+                FormBody.Builder().add("orderType","2").add("tagName","").add("pageNo","1").
                         build(), PicsBean().javaClass,handler)
     }
 

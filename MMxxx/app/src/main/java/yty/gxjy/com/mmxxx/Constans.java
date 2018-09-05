@@ -14,7 +14,6 @@ public class Constans {
     public static final String getVideo= URL+"users/getVideos";
     public static final String collectionPic= URL+"users/collectionPic";
     public static final String cancelCollectionPic= URL+"users/cancelCollectionPic";
-    public static final String geiVideos= URL+"users/getVideos";
     public static final String getSearch= URL+"users/getVideos";
     public static final String updatePass= URL+"users/updatePass";
     public static String Session = null;

@@ -54,13 +54,11 @@ class VideoFragment : BaseFragment() {
         var listImg = listOf(R.drawable.v1,R.drawable.v2,R.drawable.v3)
         mViewPager = mView?.video_rollpager
         mViewPager?.setAdapter(VideoPagerAdapter(mViewPager!!,listImg))
-        var lis = listOf("www.jmzsjy.com/UploadFile/微课/地方风味小吃——宫廷香酥牛肉饼.mp4","http://www.jmzsjy.com/UploadFile/微课/地方风味小吃——宫廷香酥牛肉饼.mp4")
-        binding?.dataVideo = lis
         Utils.logError("onResume","走了")
     }
     override fun initData() {
         OkHttpUtils.getInstance().getData(activity, Constans.getVideo,
-                FormBody.Builder().add("orderType","1").add("tagName","").
+                FormBody.Builder().add("orderType","1").add("tagName","").add("pageNo","1").
                         build(), PicsBean().javaClass,handler)
     }
 

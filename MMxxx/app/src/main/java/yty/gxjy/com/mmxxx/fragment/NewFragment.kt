@@ -63,7 +63,7 @@ class NewFragment : BaseFragment() ,RecyclerItemClick{
     }
     override fun initData() {
         OkHttpUtils.getInstance().getData(activity, Constans.getPics,
-                FormBody.Builder().add("orderType","1").add("tagName","").
+                FormBody.Builder().add("orderType","1").add("tagName","").add("pageNo","1").
                         build(), PicsBean().javaClass,handler)
     }
 
