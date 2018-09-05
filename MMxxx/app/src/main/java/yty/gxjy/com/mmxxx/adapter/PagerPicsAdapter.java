@@ -21,32 +21,25 @@ import yty.gxjy.com.mmxxx.R;
  * Created by WuJingCheng
  * on 2018/9/2.
  */
-
 public class PagerPicsAdapter  extends PagerAdapter {
-
     private List<PicDetailBean.DataBean> imgList;
     private Context mContext;
     public PagerPicsAdapter(List<PicDetailBean.DataBean> imgList, Context mContext) {
         this.imgList = imgList;
         this.mContext = mContext;
     }
-
     @Override
     public int getCount() {
         return imgList.size();
     }
-
     @Override
     public boolean isViewFromObject(View arg0, Object arg1) {
         return arg0 == arg1;
     }
-
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        String ps = (position+1)+"/"+imgList.size();
         View imagelayout = LayoutInflater.from(mContext).inflate(
                 R.layout.pic_detail_lay, null);
-        TextView tv = imagelayout.findViewById(R.id.tv_pager_item);
         final ImageView imageview =  imagelayout
                 .findViewById(R.id.img_pager_item);
 
@@ -64,7 +57,6 @@ public class PagerPicsAdapter  extends PagerAdapter {
                 if (targetHeight != 0 && targetWidth != 0) {
                     Bitmap result = Bitmap.createScaledBitmap(source, targetWidth, targetHeight, false);
                     if (result != source) {
-                        // Same bitmap is returned if sizes are the same
                         source.recycle();
                     }
                     return result;
@@ -73,13 +65,11 @@ public class PagerPicsAdapter  extends PagerAdapter {
                 }
 
             }
-
             @Override
             public String key() {
                 return "transformation" + " desiredWidth";
             }
         };
-        tv.setText(ps);
         Picasso.with(mContext)
                 .load(imgList.get(position).getPicUrl())
                 .transform(transformation)

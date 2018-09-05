@@ -25,6 +25,7 @@ class NewFragment : BaseFragment() ,RecyclerItemClick{
         val intent = Intent(activity,LolPicActivity().javaClass)
         intent.putExtra("pdId",picsBean?.data!![position].pdId)
         intent.putExtra("title",picsBean?.data!![position].title)
+        intent.putExtra("collectNum",picsBean?.data!![position].collectNum)
         activity.startActivity(intent)
     }
     val instance by lazy { this } //这里使用了委托，表示只有使用到instance才会执行该段代码
@@ -33,7 +34,7 @@ class NewFragment : BaseFragment() ,RecyclerItemClick{
         override fun handleMessage(msg: Message?) {
             super.handleMessage(msg)
             if(msg?.what == 1){
-                picsBean = msg.obj as PicsBean
+                 picsBean = msg.obj as PicsBean
                 val code:Int =  picsBean!!.code
                 if(code==0){
                     binding?.data =picsBean

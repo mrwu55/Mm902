@@ -1,5 +1,6 @@
 package yty.gxjy.com.mmxxx.Bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ import java.util.List;
  * on 2018/9/2.
  */
 
-public class PicDetailBean {
+public class PicDetailBean implements Serializable{
 
     /**
      * code : 0
@@ -53,7 +54,7 @@ public class PicDetailBean {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable{
         /**
          * picUrl : http://img1.mm115.net/pic/4160/1.jpg
          * status : 1

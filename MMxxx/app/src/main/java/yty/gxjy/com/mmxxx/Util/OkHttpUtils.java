@@ -57,6 +57,7 @@ public class OkHttpUtils {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
+                handler.sendEmptyMessage(0);
               activity.runOnUiThread(new Runnable() {
                   @Override
                   public void run() {
@@ -68,7 +69,6 @@ public class OkHttpUtils {
             public void onResponse(Call call, Response response) throws IOException {
                 String msg = response.body().string();
                 Log.e("response",msg);
-                System.out.println(msg);
                 if(response.isSuccessful()){
                     Message message = new Message();
                     message.what = 1;

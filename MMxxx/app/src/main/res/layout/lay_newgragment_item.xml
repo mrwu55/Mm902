@@ -19,8 +19,8 @@
         android:layout_height="239dp"
         app:imageUrl="@{imgId}"
     />
-
     <TextView
+        android:id="@+id/tv_newfragment_item"
         android:paddingLeft="11dp"
         android:paddingRight="6dp"
         android:paddingTop="8dp"

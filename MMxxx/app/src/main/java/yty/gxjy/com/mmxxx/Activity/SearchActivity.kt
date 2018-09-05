@@ -70,9 +70,9 @@ class SearchActivity : BaseActivity(),MmClickListener {
                         .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS)
                 val msg = v.text.toString()
                 if(msg!=null){
-                    OkHttpUtils.getInstance().getDataWithHandCode(this, Constans.getSearch,
-                            FormBody.Builder().add("pdId",pdId).
-                                    build(), BaseBean().javaClass,handler,2)
+//                    OkHttpUtils.getInstance().getDataWithHandCode(this, Constans.getSearch,
+//                            FormBody.Builder().add("pdId",pdId).
+//                                    build(), BaseBean().javaClass,handler,2)
                     Utils.toast(this,v.text.toString())
                 }
                 true

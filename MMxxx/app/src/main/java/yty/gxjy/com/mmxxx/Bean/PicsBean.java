@@ -4,6 +4,7 @@ import java.util.List;
 
 public class PicsBean {
 
+
     /**
      * code : 0
      * msg : 获取成功
@@ -60,7 +61,7 @@ public class PicsBean {
          */
 
         private String pdId;
-        private int collectNum;
+        private String collectNum;
         private String title;
         private String detailUrl;
         private int picNum;
@@ -75,11 +76,11 @@ public class PicsBean {
             this.pdId = pdId;
         }
 
-        public int getCollectNum() {
+        public String getCollectNum() {
             return collectNum;
         }
 
-        public void setCollectNum(int collectNum) {
+        public void setCollectNum(String collectNum) {
             this.collectNum = collectNum;
         }
 

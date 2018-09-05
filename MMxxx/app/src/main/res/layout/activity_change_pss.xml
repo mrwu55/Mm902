@@ -17,7 +17,7 @@
             android:layout_height="48dp"
             android:background="@color/f13c5d">
             <RelativeLayout
-                android:id="@+id/re_code_back"
+                android:id="@+id/re_change_back"
                 android:layout_width="60dp"
                 android:onClick="@{listener::onClick}"
                 android:paddingLeft="15dp"
@@ -40,6 +40,7 @@
         </RelativeLayout>
 
             <EditText
+                android:id="@+id/edit_changeps_old"
                 android:layout_width="match_parent"
                 android:layout_height="49dp"
                 android:textSize="13dp"
@@ -53,6 +54,7 @@
                 android:digits="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:hint="请输入旧密码"/>
             <EditText
+                android:id="@+id/edit_changeps_new"
                 android:background="@drawable/changeps_edit_bg"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="20dp"
@@ -67,6 +69,7 @@
                 android:digits="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:hint="请输入新密码"/>
         <EditText
+            android:id="@+id/edit_changeps_again"
             android:background="@drawable/changeps_edit_bg"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="20dp"
@@ -82,6 +85,8 @@
             android:hint="请再次输入新密码"/>
 
             <Button
+                android:id="@+id/btn_changeps"
+                android:onClick="@{listener::onClick}"
                 android:layout_width="80dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/changeps_sure"

@@ -12,6 +12,7 @@ import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.WindowManager
+import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_lol_pic.view.*
 import okhttp3.FormBody
 import yty.gxjy.com.mmxxx.Bean.BaseBean
@@ -25,7 +26,9 @@ import yty.gxjy.com.mmxxx.Util.Utils
 import yty.gxjy.com.mmxxx.adapter.PagerPicsAdapter
 import yty.gxjy.com.mmxxx.databinding.PicClass
 
-class LolPicActivity : AppCompatActivity(),MmClickListener {
+class LolPicActivity : AppCompatActivity(),MmClickListener,ViewPager.OnPageChangeListener {
+    private var picsDetailBean: PicDetailBean? = null
+    private var mTvChoose:TextView? = null
     private var viewPager:ViewPager? = null
     private var  pdId:String? = null
     private var isCollect:Boolean = false
@@ -34,12 +37,13 @@ class LolPicActivity : AppCompatActivity(),MmClickListener {
         override fun handleMessage(msg: Message?) {
             super.handleMessage(msg)
             if(msg?.what == 1){
-                val picsDetailBean: PicDetailBean = msg.obj as PicDetailBean
-                val code:Int =  picsDetailBean.code
+                picsDetailBean = msg.obj as PicDetailBean
+                val code:Int =  picsDetailBean?.code!!
                 if(code==0){
-                    viewPager?.adapter =PagerPicsAdapter(picsDetailBean.data,this@LolPicActivity)
+                    mTvChoose?.text ="1/"+picsDetailBean?.data!!.size
+                    viewPager?.adapter =PagerPicsAdapter(picsDetailBean?.data,this@LolPicActivity)
                 }else{
-                    val errorMsg:String =picsDetailBean.msg
+                    val errorMsg:String =picsDetailBean?.msg!!
                     Utils.toast(this@LolPicActivity,errorMsg)
                 }
             }else if(msg?.what==2){//收藏
@@ -58,6 +62,7 @@ class LolPicActivity : AppCompatActivity(),MmClickListener {
                     isCollect = false
                     binding?.isCollect = false
                 }
+
                 val msg:String =baseBean.msg
                 Utils.toast(this@LolPicActivity,msg)
             }
@@ -80,6 +85,11 @@ class LolPicActivity : AppCompatActivity(),MmClickListener {
                 }
 
             }
+            R.id.re_pic_pics ->{
+                val intent =Intent(this,PicturesActivity().javaClass)
+                intent.putExtra("picturesBean",picsDetailBean)
+                startActivity(intent)
+            }
         }
     }
     private var binding : PicClass? = null
@@ -100,11 +110,15 @@ class LolPicActivity : AppCompatActivity(),MmClickListener {
     }
 
     private fun initData() {
+        mTvChoose = binding?.root!!.tv_lol_num
         viewPager = binding?.root!!.lol_pager
         val intent:Intent = intent
         pdId = intent.getStringExtra("pdId")
         val title = intent.getStringExtra("title")
         binding?.root!!.tv_lol_title.text = title
+        val collect = intent.getStringExtra("collectNum")
+        binding?.root!!.tv_lol_collect.text = collect
+        viewPager?.setOnPageChangeListener(this)
         if(pdId!=null){
         OkHttpUtils.getInstance().getDataWithHandCode(this, Constans.getPicsDetails,
                 FormBody.Builder().add("pdId",pdId).
@@ -122,6 +136,16 @@ class LolPicActivity : AppCompatActivity(),MmClickListener {
             winParams.flags = winParams.flags and bits.inv()
         }
         win.attributes = winParams
+    }
+
+    override fun onPageScrollStateChanged(state: Int) {
+    }
+
+    override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+    }
+
+    override fun onPageSelected(position: Int) {
+        mTvChoose?.text =(position+1).toString()+"/"+picsDetailBean?.data!!.size
     }
 
 }

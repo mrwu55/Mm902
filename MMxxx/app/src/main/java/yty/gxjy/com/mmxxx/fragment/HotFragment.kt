@@ -7,6 +7,7 @@ import android.databinding.DataBindingUtil
 import android.os.Handler
 import android.os.Message
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,12 +27,6 @@ import yty.gxjy.com.mmxxx.databinding.HotBinding
  */
 class HotFragment : BaseFragment(),RecyclerItemClick {
     private var  picsBean:PicsBean? = null
-    override fun onClick(position: Int) {
-        val intent = Intent(activity,LolPicActivity().javaClass)
-        intent.putExtra("title",picsBean?.data!![position].title)
-        intent.putExtra("pdId",picsBean?.data!![position].pdId)
-        activity.startActivity(intent)
-    }
     val instance by lazy { this } //这里使用了委托，表示只有使用到instance才会执行该段代码
     private var handler : Handler = @SuppressLint("HandlerLeak")
     object : Handler(){
@@ -63,11 +58,20 @@ class HotFragment : BaseFragment(),RecyclerItemClick {
 
     }
 
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+    }
     override fun initData() {
         OkHttpUtils.getInstance().getData(activity, Constans.getPics,
                 FormBody.Builder().add("orderType","2").add("tagName","").
                         build(), PicsBean().javaClass,handler)
     }
 
-
+    override fun onClick(position: Int) {
+        val intent = Intent(activity,LolPicActivity().javaClass)
+        intent.putExtra("title",picsBean?.data!![position].title)
+        intent.putExtra("pdId",picsBean?.data!![position].pdId)
+        intent.putExtra("collectNum",picsBean?.data!![position].collectNum)
+        activity.startActivity(intent)
+    }
 }

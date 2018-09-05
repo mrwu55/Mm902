@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data class = "PicturesBinding">
+        <variable
+            name="data"
+            type="yty.gxjy.com.mmxxx.Bean.PicDetailBean" />
+        <variable name="listenerBack"
+            type="yty.gxjy.com.mmxxx.Interface.MmClickListener"/>
+        <variable
+            name="listener"
+            type="yty.gxjy.com.mmxxx.Interface.RecyclerItemClick"/>
+    </data>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".Activity.PicturesActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/f13c5d">
+        <RelativeLayout
+            android:onClick="@{listenerBack::onClick}"
+            android:paddingLeft="15dp"
+            android:layout_width="60dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="18dp"
+                android:background="@mipmap/home_back"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/tv_picture_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            />
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingRight="4dp"
+        app:dataPics="@{data}"
+        app:listener="@{listener}"/>
+</LinearLayout>
+</layout>
