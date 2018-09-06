@@ -7,7 +7,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.VideoView;
 
@@ -24,7 +23,6 @@ import yty.gxjy.com.mmxxx.Bean.VideoBean;
 import yty.gxjy.com.mmxxx.Interface.RecyclerItemClick;
 import yty.gxjy.com.mmxxx.R;
 import yty.gxjy.com.mmxxx.Util.RecyclerItemDecoration;
-import yty.gxjy.com.mmxxx.Util.Utils;
 import yty.gxjy.com.mmxxx.adapter.CollectAdapter;
 import yty.gxjy.com.mmxxx.adapter.NewRecyclerAdapter;
 import yty.gxjy.com.mmxxx.adapter.PicturesAdapter;
@@ -36,6 +34,7 @@ import yty.gxjy.com.mmxxx.adapter.VideoRecyclerAdapter;
  */
 
 public class BandingUtils {
+
     @BindingAdapter({"data","listener"})
     public static void setData(RecyclerView recyclerView, PicsBean data, RecyclerItemClick listener) {
         recyclerView.setLayoutManager(new GridLayoutManager(recyclerView.getContext(),2));
