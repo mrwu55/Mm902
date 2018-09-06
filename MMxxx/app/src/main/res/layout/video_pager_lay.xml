@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <yty.gxjy.com.mmxxx.rollpager.RollPagerView
+        android:id="@+id/video_rollpager"
+        android:layout_width="match_parent"
+        app:rollviewpager_play_delay="3000"
+        android:layout_height="188dp"/>
+</LinearLayout>

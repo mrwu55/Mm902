@@ -19,6 +19,8 @@ import java.util.List;
 import yty.gxjy.com.mmxxx.App;
 import yty.gxjy.com.mmxxx.Bean.PicDetailBean;
 import yty.gxjy.com.mmxxx.Bean.PicsBean;
+import yty.gxjy.com.mmxxx.Bean.SearchBean;
+import yty.gxjy.com.mmxxx.Bean.VideoBean;
 import yty.gxjy.com.mmxxx.Interface.RecyclerItemClick;
 import yty.gxjy.com.mmxxx.R;
 import yty.gxjy.com.mmxxx.Util.RecyclerItemDecoration;
@@ -26,6 +28,7 @@ import yty.gxjy.com.mmxxx.Util.Utils;
 import yty.gxjy.com.mmxxx.adapter.CollectAdapter;
 import yty.gxjy.com.mmxxx.adapter.NewRecyclerAdapter;
 import yty.gxjy.com.mmxxx.adapter.PicturesAdapter;
+import yty.gxjy.com.mmxxx.adapter.SearchRecyclerAdapter;
 import yty.gxjy.com.mmxxx.adapter.VideoRecyclerAdapter;
 
 /**
@@ -39,6 +42,12 @@ public class BandingUtils {
         recyclerView.setAdapter(new NewRecyclerAdapter(data,listener));
         recyclerView.addItemDecoration(new RecyclerItemDecoration(20,2));
     }
+    @BindingAdapter({"dataSearch","listener"})
+    public static void setDataSearch(RecyclerView recyclerView, SearchBean data, RecyclerItemClick listener) {
+        Context context = recyclerView.getContext();
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setAdapter(new SearchRecyclerAdapter(data,listener));
+    }
     @BindingAdapter({"dataPics","listener"})
     public static void setPics(RecyclerView recyclerView, PicDetailBean data, RecyclerItemClick listener) {
         recyclerView.setLayoutManager(new GridLayoutManager(recyclerView.getContext(),2));
@@ -46,7 +55,8 @@ public class BandingUtils {
 //        recyclerView.addItemDecoration(new RecyclerItemDecoration(20,2));
     }
     @BindingAdapter({"videoPlay"})
-    public static void setVideoData(RecyclerView recyclerView, List<String> data) {
+    public static void setVideoData(RecyclerView recyclerView, VideoBean data) {
+        if(data==null) return;
         Context context = recyclerView.getContext();
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(new VideoRecyclerAdapter(data,context));
@@ -75,7 +85,7 @@ public class BandingUtils {
                 int targetHeight = (int) (targetWidth * aspectRatio);
 
                 if (targetHeight != 0 && targetWidth != 0) {
-                    Log.e("裁剪",targetWidth+"==="+targetHeight);
+                    Log.e("裁剪",targetWidth+"==="+aspectRatio);
                     Bitmap result = Bitmap.createScaledBitmap(source, targetWidth, targetHeight, false);
                     if (result != source) {
                         source.recycle();

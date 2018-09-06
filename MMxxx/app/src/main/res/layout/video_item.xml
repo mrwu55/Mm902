@@ -1,30 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout>
     <data class = "VideItemBinding">
-        <variable
-            name="videoUrl"
-            type="String"/>
+        <variable name="isCollect"  type="boolean"/>
+        <variable name="listener"  type="yty.gxjy.com.mmxxx.Interface.MmClickListener"/>
     </data>
-
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <ImageView
-        android:layout_width="match_parent"
-        android:background="@drawable/v2"
-        android:layout_height="210dp" />
-    <VideoView
-        android:id="@+id/videoView"
-        android:layout_width="match_parent"
-        android:layout_height="210dp"
-        app:videoUrl="@{videoUrl}"
-        />
+    android:background="@color/ebeb"
+    android:orientation="vertical"
+    android:layout_height="250dp">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="210dp"
+        android:background="@color/black"
         >
+        <VideoView
+            android:id="@+id/videoView"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            />
+
+        <RelativeLayout
+            android:id="@+id/re_videoItem_play"
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:background="@drawable/v2"
+            >
+            <ImageView
+                android:id="@+id/img_videoitem_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <ImageView
+                android:layout_centerInParent="true"
+                android:layout_width="60dp"
+                android:background="@mipmap/play_btn"
+                android:layout_height="60dp" />
+        </RelativeLayout>
         <TextView
+            android:id="@+id/tv_video_title"
             android:layout_width="match_parent"
             android:layout_height="24dp"
             android:background="@color/black66"
@@ -34,39 +49,49 @@
             android:textColor="@color/white"
             android:gravity="center_vertical"
             />
-            <Button
-                android:id="@+id/btn_video_play"
-                android:layout_centerInParent="true"
-                android:layout_width="60dp"
-                android:background="@mipmap/play_btn"
-                android:layout_height="60dp" />
-        <LinearLayout
-            android:layout_alignParentBottom="true"
+    </RelativeLayout>
+    <LinearLayout
+            android:id="@+id/ll_video_item"
             android:layout_width="match_parent"
-            android:background="@color/black66"
+            android:layout_height="31dp"
             android:orientation="horizontal"
-            android:visibility="gone"
-            android:paddingLeft="14dp"
-            android:paddingRight="14dp"
             android:gravity="center_vertical"
-            android:layout_height="33dp">
-            <Button
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                />
-                <SeekBar
-                    android:layout_width="0dp"
-                    android:layout_height="2dp"
-                    android:layout_weight="1"/>
-            <Button
-                android:layout_width="15dp"
+            android:background="@color/white">
+            <ImageView
+                android:background="@{isCollect?@drawable/video_collect_normal:@drawable/video_collect_press}"
+                android:onClick="@{listener::onClick}"
+                android:id="@+id/img_lol_collect"
+                android:layout_marginLeft="16dp"
+                android:layout_width="17dp"
                 android:layout_height="15dp"
                 />
+            <ImageView
+                android:layout_width="17dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="15dp"
+                android:background="@mipmap/video_bb"/>
+            <TextView
+                android:id="@+id/tv_video_bb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13dp"
+                android:layout_marginLeft="4dp"
+                android:textColor="@color/c3e"
+                android:text="212"/>
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="15dp"
+                android:layout_marginLeft="16dp"
+                android:background="@mipmap/video_zan"/>
+        <TextView
+            android:id="@+id/tv_video_click"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:text="45"
+            android:layout_marginLeft="4dp"
+            android:textColor="@color/c3e"/>
         </LinearLayout>
-    </RelativeLayout>
-    <!--<com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer-->
-        <!--android:id="@+id/video_player"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="210dp" />-->
-</FrameLayout>
+
+</LinearLayout>
 </layout>

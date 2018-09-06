@@ -7,7 +7,11 @@ import yty.gxjy.com.mmxxx.R
 import yty.gxjy.com.mmxxx.View.Dialog
 import yty.gxjy.com.mmxxx.databinding.CallbackClass
 
-class CallbackActivity : BaseActivity(), MmClickListener {
+class CallbackActivity : BaseActivity(), MmClickListener,Dialog.OnDialogClick {
+    override fun onDialogClick() {
+        finish()
+    }
+
     private var dialog: Dialog?=null
 
     private var binding: CallbackClass?=null
@@ -27,7 +31,7 @@ class CallbackActivity : BaseActivity(), MmClickListener {
             }
             R.id.tv_callback_sure ->{
                 if(dialog==null){
-                    dialog = Dialog(this)
+                    dialog = Dialog(this,"提交成功！",this)
                 }
                 dialog?.show()
             }

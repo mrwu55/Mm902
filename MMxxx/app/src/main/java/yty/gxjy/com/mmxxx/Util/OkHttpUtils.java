@@ -122,7 +122,7 @@ public class OkHttpUtils {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String msg = response.body().string();
-                Log.e("response",msg);
+                Constans.showLogCompletion(msg,3000);
                 if(response.isSuccessful()){
                     Message message = new Message();
                     message.what = handlecode;

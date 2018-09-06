@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <data class="SearchClass">
         <variable name="listener"
             type="yty.gxjy.com.mmxxx.Interface.MmClickListener"/>
+        <variable name="listenerItem"
+            type="yty.gxjy.com.mmxxx.Interface.RecyclerItemClick"/>
+        <variable name="data"
+            type="yty.gxjy.com.mmxxx.Bean.SearchBean"/>
     </data>
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -64,6 +68,9 @@
         </LinearLayout>
       <android.support.v7.widget.RecyclerView
           android:id="@+id/recycler_search"
+          app:dataSearch = "@{data}"
+          app:listener = "@{listenerItem}"
+          android:layout_marginTop="4dp"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           />

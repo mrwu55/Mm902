@@ -35,6 +35,13 @@ class PicturesAdapter(picsBean: PicDetailBean?, listener: RecyclerItemClick?) : 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if(data!=null&&data?.data!=null){
             var dataBean:PicDetailBean.DataBean = data?.data!![position]
+            val imageView = holder.bindings.imgPicPics
+            val layoutParams = imageView.layoutParams
+            val width = App.app.getwidth()/2
+            layoutParams.width =width
+            layoutParams.height = (width*1.5).toInt()
+            imageView.layoutParams = layoutParams
+//            imageView.setPadding(16,0,0,0)
             holder.getBinding().imgId= dataBean.picUrl
 
         }

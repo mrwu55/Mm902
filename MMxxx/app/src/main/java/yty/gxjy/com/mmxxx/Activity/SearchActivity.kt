@@ -18,31 +18,40 @@ import android.widget.TextView.OnEditorActionListener
 import okhttp3.FormBody
 import yty.gxjy.com.mmxxx.Bean.BaseBean
 import yty.gxjy.com.mmxxx.Bean.LoginBean
+import yty.gxjy.com.mmxxx.Bean.SearchBean
 import yty.gxjy.com.mmxxx.Constans
+import yty.gxjy.com.mmxxx.Interface.RecyclerItemClick
 import yty.gxjy.com.mmxxx.Util.OkHttpUtils
 import yty.gxjy.com.mmxxx.Util.Utils
 
 
-class SearchActivity : BaseActivity(),MmClickListener {
+class SearchActivity : BaseActivity(),MmClickListener, RecyclerItemClick {
+    override fun onClick(position: Int) {
+        val intent = Intent(this,LolPicActivity().javaClass)
+        val picBean = serachBean?.data!!.pics[position]
+        intent.putExtra("pdId",picBean.pdId)
+        intent.putExtra("title",picBean.title)
+        intent.putExtra("collectNum",picBean.collectNum)
+        startActivity(intent)
+    }
 
+    private var serachBean:SearchBean? = null
+    val instance by lazy { this }
     private var handler : Handler = @SuppressLint("HandlerLeak")
     object : Handler(){
         override fun handleMessage(msg: Message?) {
             super.handleMessage(msg)
-            if(msg?.what == 1){
-//                val loginBean: LoginBean = msg.obj as LoginBean
-//                val code:Int =  loginBean.code
-//                if(code==0){
-//                    Constans.uName = loginBean.data.uName
-//                    Constans.vipName = loginBean.data.mlName
-//                    startActivity(Intent(this@SearchActivity, MainActivity().javaClass))
-//                    finish()
-//                }else{
-//                    val errorMsg:String =loginBean.msg
-//                    Utils.toast(this@SearchActivity,errorMsg)
-//                    startActivity(Intent(this@SearchActivity, MainActivity().javaClass))
-//                    finish()
-//                }
+            if(msg?.what == 2){
+                serachBean = msg.obj as SearchBean
+                val code:Int =  serachBean?.code!!
+                if(code==0){
+                    binding?.data = serachBean
+                    binding?.listener = instance
+                    binding?.listenerItem =instance
+                }else{
+                    val errorMsg:String =serachBean?.msg!!
+                    Utils.toast(this@SearchActivity,errorMsg)
+                }
             }
 
         }
@@ -70,15 +79,16 @@ class SearchActivity : BaseActivity(),MmClickListener {
                         .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS)
                 val msg = v.text.toString()
                 if(msg!=null){
-//                    OkHttpUtils.getInstance().getDataWithHandCode(this, Constans.getSearch,
-//                            FormBody.Builder().add("pdId",pdId).
-//                                    build(), BaseBean().javaClass,handler,2)
-                    Utils.toast(this,v.text.toString())
+                    OkHttpUtils.getInstance().getDataWithHandCode(this, Constans.getSearch,
+                            FormBody.Builder().add("searchType","3").
+                                    add("keyWords",msg).add("pageNo","1").
+                                    build(), SearchBean().javaClass,handler,2)
                 }
                 true
             }
             false
         })
     }
+
 
 }

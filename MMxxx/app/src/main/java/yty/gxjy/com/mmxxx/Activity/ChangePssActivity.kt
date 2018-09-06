@@ -1,6 +1,7 @@
 package yty.gxjy.com.mmxxx.Activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Handler
 import android.os.Message
@@ -8,37 +9,39 @@ import android.view.View
 import android.widget.EditText
 import okhttp3.FormBody
 import yty.gxjy.com.mmxxx.Bean.BaseBean
+import yty.gxjy.com.mmxxx.Bean.LoginBean
 import yty.gxjy.com.mmxxx.Constans
 import yty.gxjy.com.mmxxx.Interface.MmClickListener
 import yty.gxjy.com.mmxxx.R
 import yty.gxjy.com.mmxxx.Util.OkHttpUtils
 import yty.gxjy.com.mmxxx.Util.Utils
+import yty.gxjy.com.mmxxx.View.Dialog
 import yty.gxjy.com.mmxxx.databinding.ChangePssClass
 
-class ChangePssActivity : BaseActivity(),MmClickListener {
+class ChangePssActivity : BaseActivity(),MmClickListener,Dialog.OnDialogClick {
     private var mEditOldPs:EditText? = null
     private var mEditNewPs:EditText? = null
     private var mEditAgainPs:EditText? = null
     private var binding: ChangePssClass?=null
-
+    private var dialog: Dialog?=null
+    val instance by lazy { this }
     private var handler : Handler = @SuppressLint("HandlerLeak")
     object : Handler(){
         override fun handleMessage(msg: Message?) {
             super.handleMessage(msg)
             if(msg?.what == 1){
-//                val loginBean: LoginBean = msg.obj as LoginBean
-//                val code:Int =  loginBean.code
-//                if(code==0){
-//                    Constans.uName = loginBean.data.uName
-//                    Constans.vipName = loginBean.data.mlName
-//                    startActivity(Intent(this@SearchActivity, MainActivity().javaClass))
-//                    finish()
-//                }else{
-//                    val errorMsg:String =loginBean.msg
-//                    Utils.toast(this@SearchActivity,errorMsg)
-//                    startActivity(Intent(this@SearchActivity, MainActivity().javaClass))
-//                    finish()
-//                }
+                val loginBean: BaseBean = msg.obj as BaseBean
+                val code:Int =  loginBean.code
+                if(code==0){
+                    val msg  = loginBean.msg
+                    if(dialog==null){
+                        dialog = Dialog(this@ChangePssActivity,msg,instance)
+                    }
+                    dialog?.show()
+                }else{
+                    val errorMsg:String =loginBean.msg
+                    Utils.toast(this@ChangePssActivity,errorMsg)
+                }
             }
 
         }
@@ -86,5 +89,8 @@ class ChangePssActivity : BaseActivity(),MmClickListener {
                 finish()
             }
         }
+    }
+    override fun onDialogClick() {
+            finish()
     }
 }

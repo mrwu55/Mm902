@@ -56,10 +56,7 @@ class NewFragment : BaseFragment() ,RecyclerItemClick{
         return binding?.root
     }
     override fun initView() {
-//        var list = listOf<Int>(R.drawable.p1, R.drawable.p2,
-//                R.drawable.p3, R.drawable.p4, R.drawable.p1, R.drawable.p2,
-//                R.drawable.p3, R.drawable.p4)
-//        binding?.data =list
+
     }
     override fun initData() {
         OkHttpUtils.getInstance().getData(activity, Constans.getPics,

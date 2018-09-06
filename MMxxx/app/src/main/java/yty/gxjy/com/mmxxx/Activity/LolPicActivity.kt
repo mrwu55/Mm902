@@ -32,6 +32,7 @@ class LolPicActivity : AppCompatActivity(),MmClickListener,ViewPager.OnPageChang
     private var viewPager:ViewPager? = null
     private var  pdId:String? = null
     private var isCollect:Boolean = false
+    private  var title:String? = null
     private var handler : Handler = @SuppressLint("HandlerLeak")
     object : Handler(){
         override fun handleMessage(msg: Message?) {
@@ -88,6 +89,7 @@ class LolPicActivity : AppCompatActivity(),MmClickListener,ViewPager.OnPageChang
             R.id.re_pic_pics ->{
                 val intent =Intent(this,PicturesActivity().javaClass)
                 intent.putExtra("picturesBean",picsDetailBean)
+                intent.putExtra("title",title)
                 startActivity(intent)
             }
         }
@@ -114,7 +116,7 @@ class LolPicActivity : AppCompatActivity(),MmClickListener,ViewPager.OnPageChang
         viewPager = binding?.root!!.lol_pager
         val intent:Intent = intent
         pdId = intent.getStringExtra("pdId")
-        val title = intent.getStringExtra("title")
+        title = intent.getStringExtra("title")
         binding?.root!!.tv_lol_title.text = title
         val collect = intent.getStringExtra("collectNum")
         binding?.root!!.tv_lol_collect.text = collect

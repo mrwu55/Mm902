@@ -51,7 +51,6 @@
             android:gravity="top"
             android:textColor="@color/black28"
             android:textColorHint="@color/black28"
-            android:digits="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
             android:hint="请详细描述您的问题或建议，我们将及时跟进和解决！"
             />
 

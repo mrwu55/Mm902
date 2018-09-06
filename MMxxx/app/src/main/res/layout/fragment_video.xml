@@ -1,9 +1,9 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <data class = "VideoBinding">
-        <import type="java.util.List" />
         <variable
-            name="dataVideo"
-            type="List&lt;String&gt;" />
+            name="videoBean"
+            type="yty.gxjy.com.mmxxx.Bean.VideoBean" />
+
     </data>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -25,15 +25,11 @@
                 android:textSize="18dp"/>
 
         </RelativeLayout>
-        <yty.gxjy.com.mmxxx.rollpager.RollPagerView
-            android:id="@+id/video_rollpager"
-            android:layout_width="match_parent"
-            app:rollviewpager_play_delay="3000"
-            android:layout_height="188dp"/>
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/video_recycler"
             android:layout_marginTop="13dp"
-            app:videoPlay = "@{dataVideo}"
+            app:videoPlay = "@{videoBean}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>
