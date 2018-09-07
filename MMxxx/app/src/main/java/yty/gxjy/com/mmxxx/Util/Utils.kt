@@ -1,18 +1,15 @@
 package yty.gxjy.com.mmxxx.Util
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
-import android.graphics.PixelFormat
 import android.util.Log
 import android.view.Gravity
 import android.view.View
+import android.view.WindowManager
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import yty.gxjy.com.mmxxx.R
-import yty.gxjy.com.mmxxx.View.ToastDialog
-import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.opengl.ETC1.getWidth
-import android.view.WindowManager
 
 
 
@@ -29,13 +26,13 @@ object Utils{
     fun logError(key:String,value:String){
              Log.e(key,value)
      }
-    fun toast(context: Context,str:String ){
+    fun toast(context: Activity?, str:String ){
         if(toast==null){
             toast = Toast(context)
             val views = View.inflate(context, R.layout.toast_lay,null)
             toast?.view =views
             tv = views.findViewById(R.id.tv_toast_msg)
-            val wm = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+            val wm = context?.getSystemService(Context.WINDOW_SERVICE) as WindowManager
             //获得屏幕的宽度
             val width = wm.defaultDisplay.width/2
             val layoutParams = LinearLayout.LayoutParams(width,

@@ -2,7 +2,6 @@
 <layout>
     <data class = "VideItemBinding">
         <variable name="isCollect"  type="boolean"/>
-        <variable name="listener"  type="yty.gxjy.com.mmxxx.Interface.MmClickListener"/>
     </data>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -15,7 +14,7 @@
         android:layout_height="210dp"
         android:background="@color/black"
         >
-        <VideoView
+        <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
             android:id="@+id/videoView"
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
@@ -26,6 +25,7 @@
             android:id="@+id/re_videoItem_play"
             android:layout_width="match_parent"
             android:layout_height="210dp"
+            android:visibility="gone"
             android:background="@drawable/v2"
             >
             <ImageView
@@ -38,17 +38,7 @@
                 android:background="@mipmap/play_btn"
                 android:layout_height="60dp" />
         </RelativeLayout>
-        <TextView
-            android:id="@+id/tv_video_title"
-            android:layout_width="match_parent"
-            android:layout_height="24dp"
-            android:background="@color/black66"
-            android:text="教你画动漫场景"
-            android:paddingLeft="8dp"
-            android:textSize="13dp"
-            android:textColor="@color/white"
-            android:gravity="center_vertical"
-            />
+
     </RelativeLayout>
     <LinearLayout
             android:id="@+id/ll_video_item"
@@ -58,8 +48,7 @@
             android:gravity="center_vertical"
             android:background="@color/white">
             <ImageView
-                android:background="@{isCollect?@drawable/video_collect_normal:@drawable/video_collect_press}"
-                android:onClick="@{listener::onClick}"
+                android:background="@{isCollect?@drawable/video_collect_press:@drawable/video_collect_normal}"
                 android:id="@+id/img_lol_collect"
                 android:layout_marginLeft="16dp"
                 android:layout_width="17dp"

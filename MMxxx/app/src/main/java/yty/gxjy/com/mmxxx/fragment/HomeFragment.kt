@@ -38,7 +38,7 @@ class HomeFragment : BaseFragment(),MmClickListener {
     override fun onClick(view: View) {
             when(view.id){
                 R.id.home_search ->{
-                    activity.startActivity(Intent(activity,SearchActivity().javaClass))
+                    activity?.startActivity(Intent(activity,SearchActivity().javaClass))
                 }
             }
     }

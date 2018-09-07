@@ -9,7 +9,6 @@ import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import io.vov.vitamio.utils.Log
 import okhttp3.FormBody
 import yty.gxjy.com.mmxxx.Activity.*
 import yty.gxjy.com.mmxxx.Bean.LoginBean
@@ -31,7 +30,7 @@ class MineFragment : BaseFragment(), MmClickListener {
                 val code:Int =  loginBean.code
                 if(code==1){
                     Constans.Session =null
-                    activity.finish()
+                    activity?.finish()
                 }else{
                     val errorMsg:String =loginBean.msg
                     Utils.toast(activity,errorMsg)
@@ -63,30 +62,29 @@ class MineFragment : BaseFragment(), MmClickListener {
     override fun onClick(view: View) {
         when(view.id){
             R.id.mine_person ->{
-                activity.startActivity(Intent(activity,PersonDataActivity().javaClass))
+                activity?.startActivity(Intent(activity,PersonDataActivity().javaClass))
             }
             R.id.mine_tv_exit ->{
-                Log.e("退出","走了");
                 OkHttpUtils.getInstance().getData(activity, Constans.Exit,
                         FormBody.Builder().build(), LoginBean().javaClass,handler)
             }
             R.id.mine_watched ->{
-                activity.startActivity(Intent(activity,WatchedActivity().javaClass))
+                activity?.startActivity(Intent(activity,WatchedActivity().javaClass))
             }
             R.id.mine_updatesoft ->{
-                activity.startActivity(Intent(activity,UpdateSoftActivity().javaClass))
+                activity?.startActivity(Intent(activity,UpdateSoftActivity().javaClass))
             }
             R.id.mine_jihuocode ->{
-                activity.startActivity(Intent(activity,InputCodeActivity().javaClass))
+                activity?.startActivity(Intent(activity,InputCodeActivity().javaClass))
             }
             R.id.mine_changeps ->{
-                activity.startActivity(Intent(activity,ChangePssActivity().javaClass))
+                activity?.startActivity(Intent(activity,ChangePssActivity().javaClass))
             }
             R.id.mine_connect ->{
-                activity.startActivity(Intent(activity,CustomerActivity().javaClass))
+                activity?.startActivity(Intent(activity,CustomerActivity().javaClass))
             }
             R.id.mine_callback ->{
-                activity.startActivity(Intent(activity,CallbackActivity().javaClass))
+                activity?.startActivity(Intent(activity,CallbackActivity().javaClass))
             }
         }
     }

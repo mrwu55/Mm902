@@ -1,7 +1,6 @@
 package yty.gxjy.com.mmxxx.Activity
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Handler
 import android.os.Message
@@ -9,7 +8,6 @@ import android.view.View
 import android.widget.EditText
 import okhttp3.FormBody
 import yty.gxjy.com.mmxxx.Bean.BaseBean
-import yty.gxjy.com.mmxxx.Bean.LoginBean
 import yty.gxjy.com.mmxxx.Constans
 import yty.gxjy.com.mmxxx.Interface.MmClickListener
 import yty.gxjy.com.mmxxx.R

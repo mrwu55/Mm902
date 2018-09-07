@@ -16,7 +16,6 @@ import yty.gxjy.com.mmxxx.Activity.LolPicActivity
 import yty.gxjy.com.mmxxx.Bean.PicsBean
 import yty.gxjy.com.mmxxx.Constans
 import yty.gxjy.com.mmxxx.Interface.PicClickListener
-import yty.gxjy.com.mmxxx.Interface.RecyclerItemClick
 import yty.gxjy.com.mmxxx.R
 import yty.gxjy.com.mmxxx.Util.OkHttpUtils
 import yty.gxjy.com.mmxxx.Util.Utils
@@ -32,7 +31,7 @@ class NewFragment : BaseFragment(),SwipeRefreshLayout.OnRefreshListener,
         intent.putExtra("pdId",dataBean.pdId)
         intent.putExtra("title",dataBean.title)
         intent.putExtra("collectNum",dataBean.collectNum)
-        activity.startActivity(intent)
+        activity?.startActivity(intent)
     }
 
     private  var swipeAdapter:SwipeRecyclerAdapter? = null
@@ -42,7 +41,7 @@ class NewFragment : BaseFragment(),SwipeRefreshLayout.OnRefreshListener,
     private var  picsBean:PicsBean? = null
     private  var helper:SwipeToLoadHelper? = null
     private var page =1
-
+    private var isInit:Boolean = true
     private var listData:MutableCollection<PicsBean.DataBean> = ArrayList()
 
     val instance by lazy { this } //这里使用了委托，表示只有使用到instance才会执行该段代码
@@ -61,6 +60,10 @@ class NewFragment : BaseFragment(),SwipeRefreshLayout.OnRefreshListener,
                     if(code==0){
                         swipeAdapter?.setDatas(picsBean?.data!!,true)
                         adapterWrapper?.notifyDataSetChanged()
+                        if(isInit){
+                            swipeRefresh?.visibility = View.VISIBLE
+                            isInit = false
+                        }
                     }else{
                         val errorMsg:String =picsBean!!.msg
                         Utils.toast(activity,errorMsg)
@@ -75,6 +78,9 @@ class NewFragment : BaseFragment(),SwipeRefreshLayout.OnRefreshListener,
                         swipeAdapter?.setDatas(picsBean?.data!!,false)
                         adapterWrapper?.notifyDataSetChanged()
                     }else{
+                        if(code==1){
+                            helper?.setSwipeToLoadEnabled(false)
+                        }
                         val errorMsg:String =picsBean!!.msg
                         Utils.toast(activity,errorMsg)
                     }
@@ -95,6 +101,7 @@ class NewFragment : BaseFragment(),SwipeRefreshLayout.OnRefreshListener,
     }
     override fun initView() {
         swipeRefresh = binding?.swipeRefreshNew
+        swipeRefresh?.visibility = View.GONE
         recycler = binding?.newRecycler
         val pool = RecyclerView.RecycledViewPool()
         pool.setMaxRecycledViews(0, 10)
@@ -106,7 +113,6 @@ class NewFragment : BaseFragment(),SwipeRefreshLayout.OnRefreshListener,
         recycler?.adapter = adapterWrapper
         swipeRefresh?.setOnRefreshListener(this)
         helper?.setLoadMoreListener(this)
-
     }
     override fun initData() {
         getData("1",true)

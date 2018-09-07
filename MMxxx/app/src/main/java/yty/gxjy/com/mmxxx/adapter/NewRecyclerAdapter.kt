@@ -18,7 +18,7 @@ import yty.gxjy.com.mmxxx.databinding.NewRecyclerBindng
   class NewRecyclerAdapter(picsBean: PicsBean?, listener: RecyclerItemClick?) : RecyclerView.Adapter<NewRecyclerAdapter.ViewHolder>() {
     var data = picsBean
     var itemClickListener = listener
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder? {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding: NewRecyclerBindng = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.lay_newgragment_item, parent, false)
         return ViewHolder(binding)
     }

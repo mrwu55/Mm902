@@ -3,7 +3,6 @@ package yty.gxjy.com.mmxxx
 import android.app.Application
 import android.content.Context
 import android.support.multidex.MultiDex
-import io.vov.vitamio.Vitamio
 
 /**
  * Created by WuJingCheng on 2018/7/16.
@@ -18,7 +17,6 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         app = this
-        Vitamio.initialize(this)
         var resources = this.getResources()
         var dm = resources.getDisplayMetrics()
         var density = dm.density

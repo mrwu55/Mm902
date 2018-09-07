@@ -66,7 +66,7 @@ public class VideoBean {
          * gdp002 : 1535629460000
          */
 
-        private int vdId;
+        private String vdId;
         private int avid;
         private int commentNum;
         private long gmtCreate;
@@ -81,11 +81,11 @@ public class VideoBean {
         private String fileName;
         private long gdp002;
 
-        public int getVdId() {
+        public String getVdId() {
             return vdId;
         }
 
-        public void setVdId(int vdId) {
+        public void setVdId(String vdId) {
             this.vdId = vdId;
         }
 

@@ -19,7 +19,7 @@ import yty.gxjy.com.mmxxx.databinding.CollectRecyclerBindng
 
 class CollectAdapter(listData:MutableCollection<PicsBean.DataBean>?) : RecyclerView.Adapter<CollectAdapter.ViewHolder>() {
     var data = listData
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder? {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding: CollectRecyclerBindng = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.collect_item, parent, false)
         return ViewHolder(binding)
     }

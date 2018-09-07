@@ -47,22 +47,28 @@
             android:name=".Activity.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
-        <activity android:name=".Activity.PersonDataActivity" />
-        <activity android:name=".Activity.WatchedActivity" />
-        <activity android:name=".Activity.UpdateSoftActivity" />
-        <activity android:name=".Activity.InputCodeActivity" />
-        <activity android:name=".Activity.ChangePssActivity" />
-        <activity android:name=".Activity.CustomerActivity" />
-        <activity android:name=".Activity.CallbackActivity" />
-        <activity android:name=".Activity.LolPicActivity" />
-        <activity android:name=".Activity.SearchActivity" />
-        <activity android:name=".Activity.PicturesActivity"></activity>
-        <activity
-            android:name="io.vov.vitamio.activity.InitActivity"
-            android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
-            android:launchMode="singleTop"
-            android:theme="@android:style/Theme.NoTitleBar"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".Activity.PersonDataActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Activity.WatchedActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Activity.UpdateSoftActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Activity.InputCodeActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Activity.ChangePssActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Activity.CustomerActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Activity.CallbackActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Activity.LolPicActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Activity.SearchActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Activity.PicturesActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

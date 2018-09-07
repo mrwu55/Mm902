@@ -18,7 +18,6 @@ import yty.gxjy.com.mmxxx.Activity.LolPicActivity
 import yty.gxjy.com.mmxxx.Bean.PicsBean
 import yty.gxjy.com.mmxxx.Constans
 import yty.gxjy.com.mmxxx.Interface.PicClickListener
-import yty.gxjy.com.mmxxx.Interface.RecyclerItemClick
 import yty.gxjy.com.mmxxx.R
 import yty.gxjy.com.mmxxx.Util.OkHttpUtils
 import yty.gxjy.com.mmxxx.Util.Utils
@@ -36,7 +35,7 @@ class HotFragment : BaseFragment(),PicClickListener,SwipeRefreshLayout.OnRefresh
         intent.putExtra("pdId",dataBean.pdId)
         intent.putExtra("title",dataBean.title)
         intent.putExtra("collectNum",dataBean.collectNum)
-        activity.startActivity(intent)
+        activity?.startActivity(intent)
     }
 
     private  var swipeAdapter: SwipeRecyclerAdapter? = null
