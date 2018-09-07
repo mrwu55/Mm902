@@ -43,9 +43,9 @@ public class BandingUtils {
     }
     @BindingAdapter({"dataSearch","listener"})
     public static void setDataSearch(RecyclerView recyclerView, SearchBean data, RecyclerItemClick listener) {
-        Context context = recyclerView.getContext();
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.setAdapter(new SearchRecyclerAdapter(data,listener));
+//        Context context = recyclerView.getContext();
+//        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+//        recyclerView.setAdapter(new SearchRecyclerAdapter(data,listener));
     }
     @BindingAdapter({"dataPics","listener"})
     public static void setPics(RecyclerView recyclerView, PicDetailBean data, RecyclerItemClick listener) {
@@ -56,9 +56,9 @@ public class BandingUtils {
     @BindingAdapter({"videoPlay"})
     public static void setVideoData(RecyclerView recyclerView, VideoBean data) {
         if(data==null) return;
-        Context context = recyclerView.getContext();
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.setAdapter(new VideoRecyclerAdapter(data,context));
+//        Context context = recyclerView.getContext();
+//        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+//        recyclerView.setAdapter(new VideoRecyclerAdapter(data,context));
     }
     @BindingAdapter({"imageUrl"})
     public static void loadImage(final ImageView view, String imageUrl) {
@@ -112,9 +112,9 @@ public class BandingUtils {
     }
     @BindingAdapter({"collectData"})
     public static void setCollectData(RecyclerView recyclerView, List<Integer> data) {
-        recyclerView.setLayoutManager(new GridLayoutManager(recyclerView.getContext(),4));
-        recyclerView.setAdapter(new CollectAdapter(data));
-        recyclerView.addItemDecoration(new RecyclerItemDecoration(8,4));
+//        recyclerView.setLayoutManager(new GridLayoutManager(recyclerView.getContext(),4));
+//        recyclerView.setAdapter(new CollectAdapter(data));
+//        recyclerView.addItemDecoration(new RecyclerItemDecoration(8,4));
     }
 
 }

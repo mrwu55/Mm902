@@ -15,6 +15,7 @@ import okhttp3.FormBody
 import yty.gxjy.com.mmxxx.Activity.LolPicActivity
 import yty.gxjy.com.mmxxx.Bean.PicsBean
 import yty.gxjy.com.mmxxx.Constans
+import yty.gxjy.com.mmxxx.Interface.PicClickListener
 import yty.gxjy.com.mmxxx.Interface.RecyclerItemClick
 import yty.gxjy.com.mmxxx.R
 import yty.gxjy.com.mmxxx.Util.OkHttpUtils
@@ -24,7 +25,16 @@ import yty.gxjy.com.mmxxx.View.SwipeToLoadHelper
 import yty.gxjy.com.mmxxx.adapter.SwipeRecyclerAdapter
 import yty.gxjy.com.mmxxx.databinding.NewBinding
 
-class NewFragment : BaseFragment() ,RecyclerItemClick,SwipeRefreshLayout.OnRefreshListener, SwipeToLoadHelper.LoadMoreListener {
+class NewFragment : BaseFragment(),SwipeRefreshLayout.OnRefreshListener,
+        SwipeToLoadHelper.LoadMoreListener, PicClickListener {
+    override fun onClick(dataBean: PicsBean.DataBean, position: Int) {
+        val intent = Intent(activity,LolPicActivity().javaClass)
+        intent.putExtra("pdId",dataBean.pdId)
+        intent.putExtra("title",dataBean.title)
+        intent.putExtra("collectNum",dataBean.collectNum)
+        activity.startActivity(intent)
+    }
+
     private  var swipeAdapter:SwipeRecyclerAdapter? = null
     private var adapterWrapper:AdapterWrapper? = null
     private var swipeRefresh:SwipeRefreshLayout? = null
@@ -34,13 +44,7 @@ class NewFragment : BaseFragment() ,RecyclerItemClick,SwipeRefreshLayout.OnRefre
     private var page =1
 
     private var listData:MutableCollection<PicsBean.DataBean> = ArrayList()
-    override fun onClick(position: Int) {
-        val intent = Intent(activity,LolPicActivity().javaClass)
-        intent.putExtra("pdId",picsBean?.data!![position].pdId)
-        intent.putExtra("title",picsBean?.data!![position].title)
-        intent.putExtra("collectNum",picsBean?.data!![position].collectNum)
-        activity.startActivity(intent)
-    }
+
     val instance by lazy { this } //这里使用了委托，表示只有使用到instance才会执行该段代码
     private var handler : Handler = @SuppressLint("HandlerLeak")
     object : Handler(){
@@ -66,14 +70,18 @@ class NewFragment : BaseFragment() ,RecyclerItemClick,SwipeRefreshLayout.OnRefre
                     picsBean = msg.obj as PicsBean
                     val code:Int =  picsBean!!.code
                     swipeRefresh?.setEnabled(true)
+                    helper?.setLoadMoreFinish()
                     if(code==0){
                         swipeAdapter?.setDatas(picsBean?.data!!,false)
                         adapterWrapper?.notifyDataSetChanged()
-                        helper?.setLoadMoreFinish()
                     }else{
                         val errorMsg:String =picsBean!!.msg
                         Utils.toast(activity,errorMsg)
                     }
+                }
+                404 ->{
+                    swipeRefresh?.isRefreshing = false
+                    helper?.setLoadMoreFinish()
                 }
             }
 

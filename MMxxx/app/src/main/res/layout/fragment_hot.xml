@@ -1,28 +1,21 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <data class = "HotBinding">
-        <variable
-            name="data"
-            type="yty.gxjy.com.mmxxx.Bean.PicsBean" />
-        <variable
-            name="listener"
-            type="yty.gxjy.com.mmxxx.Interface.RecyclerItemClick"/>
 </data>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_hot"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="#EBEBEB"
-        tools:context="yty.gxjy.com.mmxxx.fragment.NewFragment">
+        tools:context="yty.gxjy.com.mmxxx.fragment.HotFragment">
         <android.support.v7.widget.RecyclerView
             android:id="@+id/hot_recycler"
-            app:data="@{data}"
-            app:listener="@{listener}"
             android:layout_marginTop="13dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
-    </LinearLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </layout>

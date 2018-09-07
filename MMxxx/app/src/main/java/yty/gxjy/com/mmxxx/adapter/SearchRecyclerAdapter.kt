@@ -17,8 +17,8 @@ import yty.gxjy.com.mmxxx.databinding.SearchBindng
  * Created by WuJingCheng on 2018/7/19.
  */
 
-class SearchRecyclerAdapter(searchBean: SearchBean?, listener: RecyclerItemClick?) : RecyclerView.Adapter<SearchRecyclerAdapter.ViewHolder>() {
-    var data = searchBean
+class SearchRecyclerAdapter(listData:MutableCollection<SearchBean.DataBean>?, listener: RecyclerItemClick?) : RecyclerView.Adapter<SearchRecyclerAdapter.ViewHolder>() {
+    var data = listData
     var itemClickListener = listener
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder? {
         val binding: NewRecyclerBindng = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.lay_newgragment_item, parent, false)
@@ -26,11 +26,11 @@ class SearchRecyclerAdapter(searchBean: SearchBean?, listener: RecyclerItemClick
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if(data!=null&&data?.data!=null){
-            val picBean = data?.data!!.pics
-            holder.getBinding().msg =picBean[position].title
-            holder.getBinding().imgId = picBean[position].coverUrl
-//            var dataBean: PicsBean.DataBean = data?.data!![position]
+        if(data!=null){
+            val searchBean = data?.toList()!!.get(position)
+//            holder.getBinding().msg =searchBean.title
+//            holder.getBinding().imgId = picBean[position].coverUrl
+////            var dataBean: PicsBean.DataBean = data?.data!![position]
 //            holder.getBinding().imgId= dataBean.coverUrl
 //            holder.getBinding().msg = dataBean.title
         }
@@ -38,22 +38,20 @@ class SearchRecyclerAdapter(searchBean: SearchBean?, listener: RecyclerItemClick
             itemClickListener?.onClick(position)
         })
     }
-
+    fun setDatas(listData:List<SearchBean.DataBean>,isRefresh:Boolean){
+        if(isRefresh){
+            data?.clear()
+            data?.addAll(listData)
+        }else{
+            data?.addAll(listData)
+        }
+    }
     override fun getItemCount(): Int {
-        if(data!=null&&data?.data!=null){
-            val picBean =data?.data!!.pics
-//            val picVieo =data?.data!!.videos
-            var a =0
-//            var b =0
-            if(picBean!=null){
-                a = picBean.size
-            }
-//            if(picVieo!=null){
-//                b = picBean.size
-//            }
-            return a
+        if(data!=null){
+            return data?.size!!
         }
         return 0
+
     }
 
     class ViewHolder(binding: NewRecyclerBindng) : RecyclerView.ViewHolder(binding.root){

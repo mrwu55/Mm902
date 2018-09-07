@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import yty.gxjy.com.mmxxx.Bean.PicsBean
+import yty.gxjy.com.mmxxx.Interface.PicClickListener
 import yty.gxjy.com.mmxxx.Interface.RecyclerItemClick
 import yty.gxjy.com.mmxxx.R
 import yty.gxjy.com.mmxxx.databinding.NewRecyclerBindng
@@ -15,7 +16,7 @@ import yty.gxjy.com.mmxxx.databinding.NewRecyclerBindng
  * on 2018/9/6.
  */
 
-class SwipeRecyclerAdapter(listData:MutableCollection<PicsBean.DataBean>?, listener: RecyclerItemClick?) : RecyclerView.Adapter<SwipeRecyclerAdapter.ViewHolder>() {
+class SwipeRecyclerAdapter(listData:MutableCollection<PicsBean.DataBean>?, listener: PicClickListener?) : RecyclerView.Adapter<SwipeRecyclerAdapter.ViewHolder>() {
     var data = listData
     var itemClickListener = listener
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder? {
@@ -28,10 +29,12 @@ class SwipeRecyclerAdapter(listData:MutableCollection<PicsBean.DataBean>?, liste
             var dataBean: PicsBean.DataBean = data?.toList()!!.get(position)!!
             holder.getBinding().imgId= dataBean.coverUrl
             holder.getBinding().msg = dataBean.title
+            holder.itemView.setOnClickListener(View.OnClickListener {
+                itemClickListener?.onClick(dataBean,position)
+            })
         }
-        holder.itemView.setOnClickListener(View.OnClickListener {
-            itemClickListener?.onClick(position)
-        })
+
+
     }
     fun setDatas(listData:List<PicsBean.DataBean>,isRefresh:Boolean){
         if(isRefresh){

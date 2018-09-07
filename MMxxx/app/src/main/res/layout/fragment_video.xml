@@ -1,8 +1,5 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <data class = "VideoBinding">
-        <variable
-            name="videoBean"
-            type="yty.gxjy.com.mmxxx.Bean.VideoBean" />
 
     </data>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -25,13 +22,16 @@
                 android:textSize="18dp"/>
 
         </RelativeLayout>
-
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_video"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <android.support.v7.widget.RecyclerView
             android:id="@+id/video_recycler"
             android:layout_marginTop="13dp"
-            app:videoPlay = "@{videoBean}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
     </LinearLayout>
 
 </layout>

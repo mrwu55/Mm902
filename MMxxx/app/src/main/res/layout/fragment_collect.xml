@@ -1,9 +1,5 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <data class = "CollectBinding">
-        <import type="java.util.List" />
-        <variable
-            name="data"
-            type="List&lt;Integer&gt;" />
     </data>
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -18,12 +14,17 @@
             android:textColor="@color/white"
             android:layout_height="48dp"
             android:background="@color/f13c5d"/>
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_collect"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <android.support.v7.widget.RecyclerView
             android:layout_marginTop="6dp"
             android:id="@+id/collect_recycler"
-            app:collectData="@{data}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
+
     </LinearLayout>
 
 </layout>
